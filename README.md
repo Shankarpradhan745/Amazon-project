@@ -30,35 +30,24 @@ During the analysis, the following key questions were addressed using SQL querie
 analysis techniques:
 
 1. Find out the top 5 customers who made the highest profits.
-![Top 5 Customers Query](insert_image_link_here)
 
 2. Find out the average quantity ordered per category.
-![Average Quantity Query](insert_image_link_here)
 
 3. Identify the top 5 products that have generated the highest revenue.
-![Top 5 Revenue Products Query](insert_image_link_here)
 
-4. Determine the top 5 products whose revenue has decreased compared to the previous year.
-![Decreased Revenue Products Query](insert_image_link_here)
+4. Write an Sql query to find those customer's who has done more than 100 plus orders.
 
 5. Identify the highest profitable sub-category.
-![Highest Profitable Sub-category Query](insert_image_link_here)
 
 6. Find out the states with the highest total orders.
-![States with Highest Orders Query](insert_image_link_here)
 
 7. Determine the month with the highest number of orders.
-![Month with Highest Orders Query](insert_image_link_here)
 
-8. Calculate the profit margin percentage for each sale (Profit divided by Sales).
-![Profit Margin Calculation Query](insert_image_link_here)
+8. Calculate the profit margin percentage for each sale..
 
 9. Calculate the percentage contribution of each sub-category.
-![Sub-category Contribution Query](insert_image_link_here)
 
-10. Identify the top 2 categories that have received maximum returns and their return
-percentage.
-![Top 2 Returning Categories Query](insert_image_link_here)
+10. Identify the top 2 categories that have received maximum returns.
 
 ## Entity-Relationship Diagram (ERD)
 ![ERD (AMAZON_PROJECT)](https://github.com/user-attachments/assets/e66cd400-c9fb-43fc-85e5-4f4cba09801f)
