@@ -1,0 +1,123 @@
+SELECT * FROM customers;
+SELECT * FROM orders;
+SELECT * FROM products;
+SELECT * FROM returns;
+SELECT * FROM sellers;
+
+
+
+-- 1. Find out the top 5 customers who made the highest profits.
+SELECT customer_id,
+		sum(sale)
+FROM   orders
+GROUP BY 1
+ORDER BY 2 DESC
+
+		-- OR --
+
+SELECT c.customer_name,
+		o.customer_id,
+		sum(o.sale)
+FROM   orders as o
+JOIN customers as c
+ON o.customer_id = c.customer_id
+GROUP BY 1,2
+ORDER BY sum(o.sale) DESC
+
+
+	
+-- 2. Find out the average quantity ordered per category.
+SELECT category,
+		AVG (quantity)
+FROM   orders
+GROUP BY category;
+
+
+
+-- 3. Identify the top 5 products that have generated the highest revenue.
+SELECT product_id,
+	   SUM (sale) as highest_revenue
+FROM   orders
+GROUP BY 1
+ORDER BY sum(sale) DESC
+LIMIT 5
+
+
+	
+-- 4. Write an Sql query to find those customer's who has done more than 100 plus orders.
+SELECT customer_id,
+		COUNT (order_id) as Total_orders
+FROM orders
+GROUP BY 1
+HAVING COUNT (order_id) > 100
+	
+
+
+-- 5. Identify the highest profitable sub-category.
+SELECT sub_category,
+	SUM (sale) total_sale FROM orders 
+	GROUP BY 1
+	ORDER BY 2 DESC
+
+
+
+-- 6. Find out the states with the highest total orders.
+SELECT state,
+COUNT (order_id) as total_orders
+FROM orders
+GROUP BY state
+ORDER BY 2 DESC
+
+
+	
+-- 7. Determine the month with the highest number of orders.
+SELECT  EXTRACT (MONTH from order_date) as monthly_orders,
+	    EXTRACT (YEAR from order_date) as yearly,
+   	    COUNT(*) AS total_orders
+FROM 
+    orders
+GROUP BY 
+    monthly_orders, yearly
+ORDER BY 
+    total_orders DESC
+LIMIT 1;
+
+
+
+-- 8. Calculate the profit margin percentage for each sale (Profit divided by Sales).
+SELECT 
+    customer_id,
+    sale,
+    price_per_unit,
+    (sale - price_per_unit) / price_per_unit * 100 AS profit_margin_percentage
+FROM 
+    orders;
+
+
+
+-- 9. Calculate the percentage contribution of each sub-category.
+SELECT 
+    sub_category,
+    SUM(sale) AS total_sales,
+    (SUM(sale) / (SELECT SUM(sale) FROM orders) * 100) AS percentage_contribution
+FROM 
+    orders
+GROUP BY 
+    sub_category
+ORDER BY 
+    percentage_contribution DESC;
+
+
+
+-- 10. Identify the top 2 categories that have received maximum returns.
+select * from returns; select * from orders;   SELECT * FROM sellers;
+SELECT o.category, 
+	count (o.order_id)
+FROM orders as o
+INNER JOIN 
+returns as r
+ON
+o.order_id= r.order_id
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 2
